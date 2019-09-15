@@ -16,6 +16,10 @@ export default class DOM {
     static span = (...args) => DOM.makeElement(`span`, ...args);
     static img = (...args) => DOM.makeElement(`img`, ...args);
     static td = (...args) => DOM.makeElement(`td`, ...args);
+    static input = (...args) => DOM.makeElement(`input`, ...args);
+    static label = (...args) => DOM.makeElement(`label`, ...args);
+    static newLine = (...args) => DOM.makeElement(`br`, ...args);
+
     static attributeExceptions = [
       `role`,
     ];
@@ -42,6 +46,7 @@ export default class DOM {
     }
     
     static setStyles(el, styles) {
+        console.log(styles);
       if (!styles) {
         el.removeAttribute(`styles`);
         return;
@@ -67,7 +72,7 @@ export default class DOM {
         DOM.appendText(el, textOrPropsOrChild);
       } else if (typeof textOrPropsOrChild === `object`) {
         Object.keys(textOrPropsOrChild).forEach((propName) => {
-          if (propName in el || attributeExceptions.includes(propName)) {
+          if (propName in el || DOM.attributeExceptions.includes(propName)) {
             const value = textOrPropsOrChild[propName];
     
             if (propName === `style`) {
@@ -84,6 +89,21 @@ export default class DOM {
       if (otherChildren) DOM.appendArray(el, otherChildren);
     
       return el;
+    }
+
+    static makeSelect(id, parent, options) {
+        //Create and append select list
+        var selectList = document.createElement("select");
+        selectList.id = id;
+        parent.appendChild(selectList);
+
+        //Create and append the options
+        for (var i = 0; i < options.length; i++) {
+            var option = document.createElement("option");
+            option.value = options[i].value;
+            option.text = options[i].text;
+            selectList.appendChild(option);
+        }
     }
   }
     

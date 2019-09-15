@@ -20,6 +20,14 @@ h5 {
     color: #999999;
 }
 
+.section-header {
+    color: aquamarine;
+}
+
+.action-header {
+    color: coral;
+}
+
 section {
     margin-bottom: 50px;
 }
@@ -37,6 +45,8 @@ label.form {
     font-size: 14px;
     margin-right: 20px;
 }
+
 input {
     margin-right: 30px;
 }
+

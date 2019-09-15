@@ -8,6 +8,8 @@ src/dapp/config.json
 src/server/config.json
 /dapp/
 prod/
+.idea/
+*.iml
 
 # Runtime data
 pids
